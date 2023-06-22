@@ -9,26 +9,25 @@ public class Student {
     private static final int FIRST_ID = 1001;
     private static final int LAST_ID = 9999;
 
+    private static int anzahl;
     private static int nextId = FIRST_ID;
 
     private String name;
     private int id;
-    private static int anzahl = 0;
 
-    
-    private static int getNextId(){
-        if(nextId < LAST_ID){
+    private static int getNextId() {
+        if (nextId < LAST_ID) {
             return nextId++;
-        }
-        else{
+        } else {
             System.out.println("Overflow");
             return 0;
         }
     }
+
     // Standardkonstruktor
     public Student() {
-        id = getNextId();
         anzahl++;
+        id = getNextId();
     }
 
     // Konstruktor
@@ -42,8 +41,6 @@ public class Student {
         this(name); // anderen Konstruktor aufrufen
         this.id = id;
     }
-
-
 
     public int getId() {
         return id;
@@ -65,6 +62,10 @@ public class Student {
         this.name = firstName + " " + lastName;
     }
 
+    public String info() {
+        return "Name: " + name + " Id: " + id;
+    }
+
     public static int getAnzahl() {
         return anzahl;
     }
@@ -73,20 +74,16 @@ public class Student {
         Student.anzahl = anzahl;
     }
 
-    public String info() {
-        return "Name: " + name + " Id: " + id;
-    }
-
     public static void main(String[] args) throws Exception {
         // wir befinden uns in derselben Datei, deshalb kann für
         // den Zugriff auf Attribute die "Punktnotation" verwendet werden,
         // obwohl die Attribute den Modifizierer "private" haben.
         Student student1 = new Student();
-        student1.name="Nathan Evans";
-        student1.id=1001;
+        student1.name = "Nathan Evans";
+        student1.id = 1001;
 
         Student student2 = new Student();
-        student2.name ="Miksu Macloud";
+        student2.name = "Miksu Macloud";
         student2.id = 1002;
 
         System.out.println("Name: " + student1.name + " Id: " + student1.id);
