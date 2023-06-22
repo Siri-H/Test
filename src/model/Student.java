@@ -6,12 +6,27 @@ package model;
  * @author Iris Hanheide
  */
 public class Student {
+    private static final int FIRST_ID = 1001;
+    private static final int LAST_ID = 9999;
+
+    private static int nextId = FIRST_ID;
+
     private String name;
     private int id;
 
+    
+    private static int getNextId(){
+        if(nextId < LAST_ID){
+            return nextId++;
+        }
+        else{
+            System.out.println("Overflow");
+            return 0;
+        }
+    }
     // Standardkonstruktor
     public Student() {
-
+        id = getNextId();
     }
 
     // Konstruktor
